@@ -22,7 +22,7 @@ const Login = () => {
             <FormContainer>
                 <LoginContainer>
                     <div>
-                        <h4> Log In </h4>
+                        <h4> Login </h4>
                     </div>
 
                     <div className='form-row'>
@@ -53,17 +53,6 @@ const Login = () => {
 
 export default Login;
 
-const Gender = [
-    {
-        value: "Female",
-        label: "F"
-    },
-    {
-        value: "Male",
-        label: "M"
-    }
-]
-
 const LoginWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -79,15 +68,17 @@ const LoginContainer = styled.div`
  
     text-align: center;
 
+    width: 60%;
 
     border-radius: 8px;
-    border: 1px solid #000;
+    border: 1px solid #A5243D;
     padding: 1rem 2rem; 
 
     .form-row{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 30px;
+        margin-bottom: 1.5rem;
     }
 
     .button-container{
@@ -99,6 +90,7 @@ const LoginContainer = styled.div`
 const FormContainer = styled.div`
     display: flex;
     justify-content: center;
-    height: 90%;
+   
     width: 50%;
+    height: 90%;
 `;

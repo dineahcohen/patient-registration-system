@@ -23,7 +23,7 @@ const ButtonWrapper = styled.button`
     align-items: center;
     
     padding: 16px 35px;
-    margin-top: 0.5rem;
+    
     border: none;
     border-radius: 8px;
 
