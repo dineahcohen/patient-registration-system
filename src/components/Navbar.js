@@ -33,7 +33,6 @@ const NavContainer = styled.div`
     justify-content: space-between;
     
     height: 2rem;
-
     padding: 1rem;
 
     .nav-items{
