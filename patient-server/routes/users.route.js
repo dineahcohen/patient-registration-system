@@ -1,0 +1,1 @@
+//Allow users to delete their accounts
