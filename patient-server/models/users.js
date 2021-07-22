@@ -39,4 +39,4 @@ const userSchema = new Schema({
 
 userSchema.plugin(uniqueValidator, { message: 'Email already exist' });
 
-module.export = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
