@@ -51,4 +51,33 @@ router.post('/login', (req, res, next) => {
         });
 });
 
+/**
+ * Sign Up
+ */
+router.post("/register", (req, res, next) => {
+    bcrypt.hash(req.body.password, 10).then((hash) => {
+        const user = new userSchema({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: hash,
+            gender: req.body.gender,
+            address: req.body.address,
+            phone: req.body.phone
+        });
+        user.save().then((response) => {
+            res.status(201).json({
+                message: 'User created',
+                result: response
+            })
+                .catch(error => {
+                    res.status(500).json({
+                        error,
+                    })
+                })
+        })
+    })
+})
+
+
 module.exports = router;
