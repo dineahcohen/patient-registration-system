@@ -8,8 +8,8 @@ import Button from '../components/StyledElements/Button';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState('');
-    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -24,13 +24,19 @@ const Login = () => {
 
         e.preventDefault();
 
-        const userInfo = { email, password }
+        try {
+            setLoading(true)
+            const userInfo = { email, password }
 
-        axios.post('http://localhost:5000/api/auth/login', userInfo)
-            .then(res => console.log(res.data));
+            axios.post('http://localhost:5000/api/auth/login', userInfo)
+                .then(res => console.log(res.data));
 
-        setEmail('');
-        setPassword('');
+            localStorage.setItem("userInfo", JSON.stringify(userInfo));
+            setLoading(false);
+        } catch (error) {
+            setError(error.response.data.message)
+        }
+
     };
 
 
