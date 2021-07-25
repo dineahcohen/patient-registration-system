@@ -21,6 +21,6 @@ const ErrorContainer = styled.div`
     background: #A5243D;
 
     color: #ffff;
-
     text-align: center;
+    font-weight: bold;
 `;

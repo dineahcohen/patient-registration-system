@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '../components/StyledElements/Button';
+import Error from '../components/Error';
 
-
-const Login = () => {
+const Login = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    useEffect(() => {
+        const userInfo = localStorage.getItem("userInfo");
+
+        if (userInfo) {
+            history.push("/user/dashboard")
+        }
+    }, [history])
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -25,14 +32,13 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            setLoading(true)
             const userInfo = { email, password }
 
             axios.post('http://localhost:5000/api/auth/login', userInfo)
                 .then(res => console.log(res.data));
 
             localStorage.setItem("userInfo", JSON.stringify(userInfo));
-            setLoading(false);
+
         } catch (error) {
             setError(error.response.data.message)
         }
@@ -67,6 +73,8 @@ const Login = () => {
                             onChange={handlePassword} />
                     </div>
 
+                    {error && <Error> {error} </Error>}
+
                     <Button title={'Submit'} onClick={handleSubmit} />
                 </LoginContainer>
             </FormContainer>
@@ -95,6 +103,8 @@ const LoginContainer = styled.div`
 
     border-radius: 8px;
     border: 1px solid #A5243D;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
     padding: 1rem 2rem; 
 
     .form-row{
@@ -116,4 +126,6 @@ const FormContainer = styled.div`
    
     width: 50%;
     height: 90%;
+
+    background-color: #fff;
 `;

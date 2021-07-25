@@ -144,10 +144,12 @@ const RegisterContainer = styled.div`
  
     text-align: center;
 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
     border-radius: 8px;
-    border: 1px solid #000;
+    ${'' /* border: 1px solid #000; */}
     padding: 1rem 2rem; 
+    background-color: #ffff;
 
     .form-row{
         display: flex;
@@ -166,4 +168,5 @@ const FormContainer = styled.div`
     justify-content: center;
     height: 90%;
     width: 50%;
+
 `;
