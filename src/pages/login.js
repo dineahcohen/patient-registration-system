@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '../components/StyledElements/Button';
 
@@ -7,6 +8,8 @@ import Button from '../components/StyledElements/Button';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState('');
+    const [error, setError] = useState('');
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -14,6 +17,20 @@ const Login = () => {
 
     const handlePassword = (event) => {
         setPassword(event.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        console.log(email, password);
+
+        e.preventDefault();
+
+        const userInfo = { email, password }
+
+        axios.post('http://localhost:5000/api/auth/login', userInfo)
+            .then(res => console.log(res.data));
+
+        setEmail('');
+        setPassword('');
     };
 
 
@@ -44,7 +61,7 @@ const Login = () => {
                             onChange={handlePassword} />
                     </div>
 
-                    <Button title={'Submit'} />
+                    <Button title={'Submit'} onClick={handleSubmit} />
                 </LoginContainer>
             </FormContainer>
         </LoginWrapper>

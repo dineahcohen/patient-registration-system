@@ -9,8 +9,8 @@ const Navbar = () => {
             <NavContainer>
                 <Link to="/" className='link-style'> Bookns</Link>
                 <div className='nav-items'>
-                    <Link to="/auth/sign-up" className='link-style'> Login </Link>
-                    <Link to="/auth/register" className='link-style'>
+                    <Link to="/auth/login" className='link-style'> Login </Link>
+                    <Link to="/auth/registration" className='link-style'>
                         <Button title={'Sign Up'} />
                     </Link>
                 </div>

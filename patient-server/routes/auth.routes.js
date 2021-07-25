@@ -41,7 +41,10 @@ router.post('/login', (req, res, next) => {
             res.status(200).json({
                 token: jwtToken,
                 expiresIn: 3600,
-                msg: getUser,
+                firstName: getUser.firstName,
+                lastName: getUser.lastName,
+                gender: getUser.gender,
+                phone: getUser.phone
             });
         })
         .catch((err) => {

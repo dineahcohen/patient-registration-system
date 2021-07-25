@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Route path="/" component={null} />
+
       <Route path="/auth/registration" component={Registration} />
       <Route path="/auth/login" component={Login} />
       <Route path="/appointment/add" component={AddAppointment} />
