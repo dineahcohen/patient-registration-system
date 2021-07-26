@@ -68,17 +68,19 @@ router.post("/register", (req, res, next) => {
             address: req.body.address,
             phone: req.body.phone
         });
-        user.save().then((response) => {
-            res.status(201).json({
-                message: 'User created',
-                result: response
-            })
-                .catch(error => {
-                    res.status(500).json({
-                        error,
-                    })
+
+        user.save()
+            .then((response) => {
+                res.status(201).json({
+                    message: 'User created',
+                    result: response
                 })
-        })
+                    .catch(error => {
+                        res.status(500).json({
+                            error,
+                        })
+                    })
+            })
     })
 })
 

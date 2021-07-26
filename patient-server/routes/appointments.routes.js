@@ -22,7 +22,10 @@ router.route('/add').post((req, res) => {
     });
 
     newAppointment.save()
-        .then(() => res.json('Appointment booked!'))
+        .then((response) => res.json({
+            message: "Appointment made!",
+        }
+        ))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -37,3 +40,5 @@ router.route('/:id').get((req, res) => {
         .then(() => res.json('Appointment canceled.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+module.exports = router;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,9 +8,11 @@ import Button from '../components/StyledElements/Button';
 
 
 const AddAppointment = () => {
+    const [name, setName] = useState("Damion");
     const [purpose, setPurpose] = useState('');
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
+    const [error, setError] = useState('');
 
     const handlePurpose = (event) => {
         setPurpose(event.target.value);
@@ -22,6 +25,19 @@ const AddAppointment = () => {
     const handleTime = (time) => {
         setSelectedTime(time);
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        try {
+            const appointment = { name, purpose, selectedDate, selectedTime }
+
+            axios.post('http://localhost:5000/api/appointments/add', appointment)
+                .then(res => console.log(res.data));
+        } catch (error) {
+            setError(error.response.data.message)
+        }
+    }
 
     return (
         <AddAppointmentWrapper>
@@ -65,7 +81,7 @@ const AddAppointment = () => {
                         />
                     </div>
 
-                    <Button title={'Submit'} />
+                    <Button title={'Submit'} onClick={handleSubmit} />
                 </AddAppointmentContainer>
             </FormContainer>
         </AddAppointmentWrapper>
