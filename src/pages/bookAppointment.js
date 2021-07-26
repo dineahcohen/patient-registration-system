@@ -23,8 +23,6 @@ const AddAppointment = () => {
         setSelectedTime(time);
     };
 
-
-    console.log(new Date())
     return (
         <AddAppointmentWrapper>
             <FormContainer>
