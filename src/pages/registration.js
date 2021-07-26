@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -12,6 +13,8 @@ const Registration = () => {
     const [password, setPassword] = useState('');
     const [gender, setGender] = useState('Female');
     const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
+    const [error, setError] = useState(false);
 
     const handleGender = (event) => {
         setGender(event.target.value);
@@ -33,8 +36,29 @@ const Registration = () => {
         setPassword(event.target.value);
     };
 
+    const handlePhone = (event) => {
+        setPhone(event.target.value);
+    };
+
     const handleAddress = (event) => {
         setAddress(event.target.value);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        try {
+            const user = { firstName, lastName, gender, email, password, address, phone }
+
+            axios.post('http://localhost:5000/api/auth/register', user)
+                .then(res => console.log(res.data));
+
+            localStorage.setItem("user", JSON.stringify(user));
+
+        } catch (error) {
+            setError(error.response.data.message)
+        }
+
     };
     return (
         <RegisterWrapper>
@@ -105,11 +129,16 @@ const Registration = () => {
                             value={address}
                             onChange={handleAddress}
                         />
-                        <TextField required label="Phone" id="standard-size-normal" size="small" />
+                        <TextField required
+                            label="Phone"
+                            id="standard-size-normal"
+                            size="small"
+                            value={phone}
+                            onChange={handlePhone}
+                        />
                     </div>
 
-
-                    <Button title={'Submit'} />
+                    <Button title={'Submit'} onClick={handleSubmit} />
                 </RegisterContainer>
             </FormContainer>
         </RegisterWrapper>
@@ -147,7 +176,7 @@ const RegisterContainer = styled.div`
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
     border-radius: 8px;
-    ${'' /* border: 1px solid #000; */}
+
     padding: 1rem 2rem; 
     background-color: #ffff;
 
