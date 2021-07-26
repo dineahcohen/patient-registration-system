@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Card = ({ title, content }) => (
     <CardWrapper>
         <CardContainer>
-            <div>
+            <div className='card-title'>
                 {title}
             </div>
             <div>
@@ -29,16 +29,20 @@ const CardContainer = styled.div`
 
     padding: 2rem;
 
-    width: 10rem;
+    width: 11rem;
     height: 11rem;
 
     border-radius: 8px;
 
-    ${'' /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */}
-
     .card-title{
         display: flex;
+        justify-content: center;
         text-align: center;
-        font-size: 30px;
+        font-size: 20px;
+        font-weight: bold;
+
+        margin-bottom: 16px; 
+
+        text-align: center;
     }
 `;

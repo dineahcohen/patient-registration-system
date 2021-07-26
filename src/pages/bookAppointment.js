@@ -44,7 +44,7 @@ const AddAppointment = () => {
             <FormContainer>
                 <AddAppointmentContainer>
                     <div>
-                        <h4> Add Appointment </h4>
+                        <h4> Make Appointment </h4>
                     </div>
 
                     <div className='form-row'>
@@ -80,8 +80,10 @@ const AddAppointment = () => {
                             placeholderText='Appointment Time'
                         />
                     </div>
+                    <div className='button-container'>
+                        <Button title={'Submit'} onClick={handleSubmit} />
+                    </div>
 
-                    <Button title={'Submit'} onClick={handleSubmit} />
                 </AddAppointmentContainer>
             </FormContainer>
         </AddAppointmentWrapper>
@@ -106,7 +108,10 @@ const AddAppointmentContainer = styled.div`
     text-align: center;
 
     border-radius: 8px;
-    border: 1px solid #A5243D;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+    background-color: #fff;
+
     padding: 1rem 2rem; 
 
     .form-row{
@@ -118,13 +123,12 @@ const AddAppointmentContainer = styled.div`
 
     .button-container{
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
     }
 `;
 
 const FormContainer = styled.div`
     display: flex;
-    justify-content: center;
    
     width: fit-content;
     height: 90%;

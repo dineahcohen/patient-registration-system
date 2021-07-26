@@ -11,12 +11,17 @@ const Dashboard = () => {
                     <p> WELCOME</p>
                 </div>
                 <div className='card-container'>
-                    <Link to="/appointment/add">
-                        <Card title={'Make Appointment'} content={'gregrbbtb rgregre'} />
+                    <Link to="/appointment/add" className='link-style'>
+                        <Card title={'Make Appointment'} content={'icon'} />
                     </Link>
 
-                    <Card title={'View Appointments'} content={'gregrbbtb rgregre'} />
-                    <Card title={'Settings'} content={'gregrbbtb rgregre'} />
+                    <Link to='/appointment/view' className='link-style'>
+                        <Card title={'View Appointments'} content={'gregrbbtb rgregre'} />
+                    </Link>
+
+                    <Link to='/user/settings' className='link-style'>
+                        <Card title={'Edit User Profile'} content={'gregrbbtb rgregre'} />
+                    </Link>
                 </div>
 
             </DashboardContainer>
@@ -39,7 +44,7 @@ const DashboardContainer = styled.div`
 
     background: #ffff;
 
-    width: 85vw;
+    width: fit-content;
     height: 70vh;
 
     border-radius: 8px;
@@ -60,8 +65,10 @@ const DashboardContainer = styled.div`
 
         gap: 40px;
 
-        border: 1px solid #000;
-
         padding: 1rem;
+    }
+
+    .link-style{
+        text-decoration: none;
     }
 `;

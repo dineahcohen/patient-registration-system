@@ -42,6 +42,8 @@ const NavContainer = styled.div`
         justify-content: flex-end;
 
         width: 40%;
+
+        font-weight: bold;
     }
 
     .link-style{
