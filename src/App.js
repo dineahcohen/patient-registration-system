@@ -5,6 +5,7 @@ import AddAppointment from './pages/bookAppointment';
 import Dashboard from './pages/dashboard';
 import Login from './pages/login';
 import Registration from './pages/registration';
+import ViewAppointments from './pages/viewAppointments';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/auth/registration" component={Registration} />
       <Route path="/auth/login" component={Login} />
       <Route path="/appointment/add" component={AddAppointment} />
+      <Route path="/appointment/view" component={ViewAppointments} />
       <Route path="/user/dashboard" component={Dashboard} />
     </Router>
   );
