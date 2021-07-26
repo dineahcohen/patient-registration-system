@@ -29,8 +29,8 @@ const CardContainer = styled.div`
 
     padding: 2rem;
 
-    width: 11rem;
-    height: 11rem;
+    width: 9rem;
+    height: 10rem;
 
     border-radius: 8px;
 
