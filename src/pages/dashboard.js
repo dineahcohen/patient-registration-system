@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Card from '../components/DashboardCard';
+import settings from '../assets/settings.svg';
+import addAppointment from '../assets/add-appointment.svg'
+import view from '../assets/view.svg';
 
 const Dashboard = () => {
     return (
@@ -12,15 +15,18 @@ const Dashboard = () => {
                 </div>
                 <div className='card-container'>
                     <Link to="/appointment/add" className='link-style'>
-                        <Card title={'Make Appointment'} content={'icon'} />
+                        <Card title={'Make an Appointment'}
+                            content={<img src={addAppointment} className="card-img" />} />
                     </Link>
 
                     <Link to='/appointment/view' className='link-style'>
-                        <Card title={'View Appointments'} content={'gregrbbtb rgregre'} />
+                        <Card title={'View All Appointments'}
+                            content={<img src={view} className="card-img" />} />
                     </Link>
 
                     <Link to='/user/settings' className='link-style'>
-                        <Card title={'Edit User Profile'} content={'gregrbbtb rgregre'} />
+                        <Card title={'Edit User Profile'}
+                            content={<img src={settings} className="card-img" />} />
                     </Link>
                 </div>
 
@@ -55,6 +61,7 @@ const DashboardContainer = styled.div`
     .dashboard-title{
         font-size: 24px;
         font-weight: bold;
+        margin-left: 1.5rem;
     }
     
     .card-container{
@@ -70,5 +77,10 @@ const DashboardContainer = styled.div`
 
     .link-style{
         text-decoration: none;
+    }
+    
+    .card-img{
+        height: 5rem;
+        width: 5rem;
     }
 `;

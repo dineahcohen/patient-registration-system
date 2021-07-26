@@ -6,7 +6,7 @@ const Card = ({ title, content }) => (
             <div className='card-title'>
                 {title}
             </div>
-            <div>
+            <div className='card-content'>
                 {content}
             </div>
         </CardContainer>
@@ -44,5 +44,13 @@ const CardContainer = styled.div`
         margin-bottom: 16px; 
 
         text-align: center;
+    }
+
+    .card-content{
+        width: 100%;
+        height: fit-content;
+
+        display: flex;
+        justify-content: center;
     }
 `;
