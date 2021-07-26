@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/StyledElements/Button';
+import logo from '../assets/logo.svg'
 
 const Navbar = () => {
     return (
         <NavWrapper>
             <NavContainer>
-                <Link to="/" className='link-style'> Bookns</Link>
+                <Link to="/" className='link-style'>
+                    <img src={logo} className="logo-img" />
+                </Link>
                 <div className='nav-items'>
                     <Link to="/auth/login" className='link-style'> Login </Link>
                     <Link to="/auth/registration" className='link-style'>
@@ -33,7 +36,7 @@ const NavContainer = styled.div`
     justify-content: space-between;
     
     height: 2rem;
-    padding: 1rem;
+    padding: 2rem;
 
     .nav-items{
         display: flex;
@@ -50,6 +53,10 @@ const NavContainer = styled.div`
         color: #A5243D;
         font-size: 16px;
         text-decoration: none;
-        margin-right: 2rem;
+        margin-right: 1rem;
+    }
+
+    .logo-img{
+      height: 2rem;
     }
 `;
