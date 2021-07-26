@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Card from '../components/DashboardCard';
 
@@ -10,8 +11,12 @@ const Dashboard = () => {
                     <p> WELCOME</p>
                 </div>
                 <div className='card-container'>
-                    <Card title={'test'} content={'gregrbbtb rgregre'} />
-                    <Card title={'test'} content={'gregrbbtb rgregre'} />
+                    <Link to="/appointment/add">
+                        <Card title={'Make Appointment'} content={'gregrbbtb rgregre'} />
+                    </Link>
+
+                    <Card title={'View Appointments'} content={'gregrbbtb rgregre'} />
+                    <Card title={'Settings'} content={'gregrbbtb rgregre'} />
                 </div>
 
             </DashboardContainer>
