@@ -31,6 +31,15 @@ const userSchema = new Schema({
     phone: {
         type: String,
         required: true
+    },
+    isDoctor: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    ip: {
+        type: String,
+        required: true
     }
 
 }, {

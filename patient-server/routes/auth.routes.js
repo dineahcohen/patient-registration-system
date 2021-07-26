@@ -59,6 +59,7 @@ router.post('/login', (req, res, next) => {
  */
 router.post("/register", (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then((hash) => {
+        const IP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
         const user = new userSchema({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -66,7 +67,9 @@ router.post("/register", (req, res, next) => {
             password: hash,
             gender: req.body.gender,
             address: req.body.address,
-            phone: req.body.phone
+            phone: req.body.phone,
+            isDoctor: req.body.isDoctor,
+            ip: IP
         });
 
         user.save()
