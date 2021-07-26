@@ -7,7 +7,7 @@ const Dashboard = () => {
     return (
         <DashboardWrapper>
             <DashboardContainer>
-                <div>
+                <div className='dashboard-title'>
                     <p> WELCOME</p>
                 </div>
                 <div className='card-container'>
@@ -34,6 +34,7 @@ const DashboardWrapper = styled.div`
 const DashboardContainer = styled.div`
     display: flex;
     align-content: center;
+    justify-content: center;
     flex-direction: column;
 
     background: #ffff;
@@ -42,17 +43,25 @@ const DashboardContainer = styled.div`
     height: 70vh;
 
     border-radius: 8px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
     padding: 2rem;
+
     .dashboard-title{
-        font-size: 36;
+        font-size: 24px;
         font-weight: bold;
     }
     
     .card-container{
         display: flex;
+        flow-direction: row;
+        justify-content: center;
         width: fit-content;
 
-        gap: 30px;
+        gap: 40px;
+
+        border: 1px solid #000;
+
+        padding: 1rem;
     }
 `;
