@@ -101,8 +101,9 @@ const LoginContainer = styled.div`
 
     width: 60%;
 
+    background-color: #fff;
+
     border-radius: 8px;
-    border: 1px solid #A5243D;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
     padding: 1rem 2rem; 
@@ -126,6 +127,4 @@ const FormContainer = styled.div`
    
     width: 50%;
     height: 90%;
-
-    background-color: #fff;
 `;
