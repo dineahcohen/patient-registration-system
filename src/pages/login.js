@@ -104,7 +104,8 @@ const LoginContainer = styled.div`
     background-color: #fff;
 
     border-radius: 8px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
     padding: 1rem 2rem; 
 
