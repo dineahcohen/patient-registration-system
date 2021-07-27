@@ -16,13 +16,13 @@ export default Button;
 
 const ButtonWrapper = styled.button`
     height: 2rem;
-    width: 8rem;
+    width: fit-content;
 
     display: flex;
     justify-content: center;
     align-items: center;
     
-    padding: 16px 35px;
+    padding: 16px 25px;
     
     border: none;
     border-radius: 8px;
@@ -33,4 +33,8 @@ const ButtonWrapper = styled.button`
     font-weight: 600;
     
     cursor: pointer;
+
+    &:hover{
+        background: #861D32;
+    }
 `;
