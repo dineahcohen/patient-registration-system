@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const appointmentSchema = new Schema({
     name: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
     },
     purpose: {
         type: String,
@@ -19,6 +21,9 @@ const appointmentSchema = new Schema({
     }
 }, {
     collection: 'apppointments'
-})
+},
+    {
+        timestamps: true,
+    })
 
 module.exports = mongoose.model('Appointment', appointmentSchema);
