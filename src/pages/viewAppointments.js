@@ -37,11 +37,12 @@ const useStyles = makeStyles({
 
 const ViewAppointments = () => {
     const classes = useStyles();
-    const [appointments, setAppointments] = useState('');
+    const [appointments, setAppointments] = useState([]);
 
     const fetchData = async () => {
-        const data = await axios.get('http://localhost:5000/api/appointments');
-        setAppointments(data.data);
+        const { data } = await axios.get('http://localhost:5000/api/appointments');
+        setAppointments(data);
+        console.log(data)
     }
 
     useEffect(() => {
