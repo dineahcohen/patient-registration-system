@@ -53,6 +53,7 @@ const ViewAppointments = () => {
         <ViewWrapper>
             <ViewContainer>
                 <p className='table-title'> All Appointments </p>
+
                 <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="customized table">
                         <TableHead>
@@ -66,8 +67,8 @@ const ViewAppointments = () => {
 
                         {appointments?.map((appointment => {
                             return (
-                                <TableBody>
-                                    <StyledTableRow>
+                                <TableBody key={appointment._id}>
+                                    <StyledTableRow >
                                         <StyledTableCell component="th" scope="row"> {appointment.name} </StyledTableCell>
                                         <StyledTableCell> {appointment.purpose}</StyledTableCell>
                                         <StyledTableCell> {appointment.date}</StyledTableCell>
@@ -104,7 +105,10 @@ const ViewContainer = styled.div`
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     padding: 1rem;
 
+    gap: 20px;
+
     .table-title{
         font-size: 24px;
+        margin: 0;
     }
 `;
