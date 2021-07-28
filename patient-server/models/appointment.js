@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const appointmentSchema = new Schema({
-    name: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "User"
-    },
     purpose: {
         type: String,
         required: true
@@ -18,7 +13,12 @@ const appointmentSchema = new Schema({
     time: {
         type: String,
         required: true
-    }
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
+    },
 }, {
     collection: 'apppointments'
 },
