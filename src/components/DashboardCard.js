@@ -53,4 +53,9 @@ const CardContainer = styled.div`
         display: flex;
         justify-content: center;
     }
+
+    &:hover{
+        background: #861D32;
+        box-shadow: box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
 `;

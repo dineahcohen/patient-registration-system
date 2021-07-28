@@ -36,5 +36,6 @@ const ButtonWrapper = styled.button`
 
     &:hover{
         background: #861D32;
+        box-shadow: box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
 `;
