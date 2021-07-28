@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Menu from '@material-ui/core/Menu';
+// import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
 import Button from '../components/StyledElements/Button';
 import logo from '../assets/logo.svg'
 import { useSelector } from 'react-redux';
@@ -9,7 +12,17 @@ const Navbar = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
-    console.log("navtest", userInfo)
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const name = userInfo.firstName + userInfo.lastName;
     return (
         <NavWrapper>
             <NavContainer>
@@ -18,7 +31,20 @@ const Navbar = () => {
                 </Link>
 
                 {userInfo ?
-                    <Button title={"Logout"} />
+                    <div>
+                        <Button onClick={handleClick} title={name} />
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                        </Menu>
+                    </div>
+
+
                     :
                     <div className='nav-items'>
                         <Link to="/auth/login" className='link-style'> Login </Link>

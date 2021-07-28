@@ -15,7 +15,7 @@ const Dashboard = () => {
         <DashboardWrapper>
             <DashboardContainer>
                 <div className='dashboard-title'>
-                    <p> Welcome, {userInfo && userInfo.firstName}</p>
+                    <p> Hello there, {userInfo && userInfo.firstName} </p>
                 </div>
                 <div className='card-container'>
                     <Link to="/appointment/add" className='link-style'>
