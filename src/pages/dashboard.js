@@ -5,13 +5,18 @@ import Card from '../components/DashboardCard';
 import settings from '../assets/settings.svg';
 import addAppointment from '../assets/add-appointment.svg'
 import view from '../assets/view.svg';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
+    console.log("test", userInfo)
     return (
         <DashboardWrapper>
             <DashboardContainer>
                 <div className='dashboard-title'>
-                    <p> WELCOME</p>
+                    <p> Welcome, {userInfo && userInfo.firstName}</p>
                 </div>
                 <div className='card-container'>
                     <Link to="/appointment/add" className='link-style'>
