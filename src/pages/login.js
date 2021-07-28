@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import Button from '../components/StyledElements/Button';
 import Error from '../components/Error';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../actions/userActions';
 
 const Login = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
+
+    const dispatch = useDispatch();
+    const userLogin = useSelector((state) => state.userLogin);
+    const { loading, error, userInfo } = userLogin;
 
     useEffect(() => {
-        const userInfo = localStorage.getItem("userInfo");
-
         if (userInfo) {
-            history.push("/user/dashboard")
+            history.push('/user/dashboard')
         }
-    }, [history])
+    }, [history, userInfo]);
 
     const handleEmail = (event) => {
         setEmail(event.target.value);
@@ -27,22 +29,9 @@ const Login = ({ history }) => {
     };
 
     const handleSubmit = (e) => {
-        console.log(email, password);
-
         e.preventDefault();
-
-        try {
-            const userInfo = { email, password }
-
-            axios.post('http://localhost:5000/api/auth/login', userInfo)
-                .then(res => console.log(res.data));
-
-            localStorage.setItem("userInfo", JSON.stringify(userInfo));
-
-        } catch (error) {
-            setError(error.response.data.message)
-        }
-
+        console.log(email, password)
+        dispatch(login(email, password));
     };
 
 
@@ -72,8 +61,6 @@ const Login = ({ history }) => {
                             value={password}
                             onChange={handlePassword} />
                     </div>
-
-                    {error && <Error> {error} </Error>}
 
                     <Button title={'Submit'} onClick={handleSubmit} />
                 </LoginContainer>
