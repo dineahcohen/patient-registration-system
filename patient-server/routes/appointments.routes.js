@@ -9,13 +9,10 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const name = req.body.name;
-    const purpose = req.body.purpose;
-    const date = req.body.date;
-    const time = req.body.time;
+    const { purpose, date, time } = req.body;
 
     const newAppointment = new Appointment({
-        name,
+        user: req.user._id,
         purpose,
         date,
         time
