@@ -22,7 +22,6 @@ const Navbar = () => {
         setAnchorEl(null);
     };
 
-    const name = userInfo.firstName + userInfo.lastName;
     return (
         <NavWrapper>
             <NavContainer>
@@ -32,7 +31,7 @@ const Navbar = () => {
 
                 {userInfo ?
                     <div>
-                        <Button onClick={handleClick} title={name} />
+                        <Button onClick={handleClick} title={'df'} />
                         <Menu
                             id="simple-menu"
                             anchorEl={anchorEl}

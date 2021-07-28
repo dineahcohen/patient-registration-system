@@ -15,6 +15,7 @@ const Login = ({ history }) => {
     const { loading, error, userInfo } = userLogin;
 
     useEffect(() => {
+        console.log(userInfo);
         if (userInfo) {
             history.push('/user/dashboard')
         }
@@ -31,6 +32,7 @@ const Login = ({ history }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login(email, password));
+        // console.log(email, password)
     };
 
 

@@ -44,7 +44,8 @@ router.post('/login', (req, res, next) => {
                 firstName: getUser.firstName,
                 lastName: getUser.lastName,
                 gender: getUser.gender,
-                phone: getUser.phone
+                phone: getUser.phone,
+                id: getUser._id
             });
         })
         .catch((err) => {

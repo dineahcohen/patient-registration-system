@@ -10,14 +10,12 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
     const { purpose, date, time } = req.body;
-
     const newAppointment = new Appointment({
-        user: req.user._id,
+        user: req.body.user,
         purpose,
         date,
         time
     });
-
     newAppointment.save()
         .then((response) => res.json({
             message: "Appointment made!",
