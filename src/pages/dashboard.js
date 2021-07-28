@@ -11,7 +11,6 @@ const Dashboard = () => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
-    console.log("test", userInfo)
     return (
         <DashboardWrapper>
             <DashboardContainer>

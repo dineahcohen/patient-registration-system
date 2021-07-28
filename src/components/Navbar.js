@@ -3,20 +3,31 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../components/StyledElements/Button';
 import logo from '../assets/logo.svg'
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
+    console.log("navtest", userInfo)
     return (
         <NavWrapper>
             <NavContainer>
                 <Link to="/" className='link-style'>
                     <img src={logo} className="logo-img" />
                 </Link>
-                <div className='nav-items'>
-                    <Link to="/auth/login" className='link-style'> Login </Link>
-                    <Link to="/auth/registration" className='link-style'>
-                        <Button title={'Sign Up'} />
-                    </Link>
-                </div>
+
+                {userInfo ?
+                    <Button title={"Logout"} />
+                    :
+                    <div className='nav-items'>
+                        <Link to="/auth/login" className='link-style'> Login </Link>
+                        <Link to="/auth/registration" className='link-style'>
+                            <Button title={'Sign Up'} />
+                        </Link>
+                    </div>
+
+                }
             </NavContainer>
         </NavWrapper>
     );
