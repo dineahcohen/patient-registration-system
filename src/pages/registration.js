@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '../components/StyledElements/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../actions/userActions';
 
 
-const Registration = () => {
+const Registration = ({ history }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -14,7 +15,17 @@ const Registration = () => {
     const [gender, setGender] = useState('Female');
     const [address, setAddress] = useState('');
     const [phone, setPhone] = useState('');
-    const [error, setError] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const userRegister = useSelector((state) => state.userRegister);
+    const { loading, error, userInfo } = userRegister;
+
+    useEffect(() => {
+        if (userInfo) {
+            history.push('/user/dashboard')
+        }
+    }, [userInfo, history]);
 
     const handleGender = (event) => {
         setGender(event.target.value);
@@ -47,18 +58,7 @@ const Registration = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        try {
-            const user = { firstName, lastName, gender, email, password, address, phone }
-
-            axios.post('http://localhost:5000/api/auth/register', user)
-                .then(res => console.log(res.data));
-
-            localStorage.setItem("user", JSON.stringify(user));
-
-        } catch (error) {
-            setError(error.response.data.message)
-        }
-
+        dispatch(register(firstName, lastName, gender, email, address, phone, password));
     };
     return (
         <RegisterWrapper>
