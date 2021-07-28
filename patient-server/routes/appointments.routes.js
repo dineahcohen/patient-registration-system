@@ -21,6 +21,7 @@ router.route('/add').post((req, res) => {
     newAppointment.save()
         .then((response) => res.json({
             message: "Appointment made!",
+            result: response
         }
         ))
         .catch(err => res.status(400).json('Error: ' + err));

@@ -8,11 +8,9 @@ import Button from '../components/StyledElements/Button';
 
 
 const AddAppointment = () => {
-    const [name, setName] = useState("Damion");
     const [purpose, setPurpose] = useState('');
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
-    const [error, setError] = useState('');
 
     const handlePurpose = (event) => {
         setPurpose(event.target.value);
@@ -30,12 +28,12 @@ const AddAppointment = () => {
         e.preventDefault();
 
         try {
-            const appointment = { name, purpose, selectedDate, selectedTime }
+            const appointment = { purpose, selectedDate, selectedTime }
 
             axios.post('http://localhost:5000/api/appointments/add', appointment)
                 .then(res => console.log(res.data));
         } catch (error) {
-            setError(error.response.data.message)
+            console.log(error.response.data.message)
         }
     }
 
@@ -83,7 +81,6 @@ const AddAppointment = () => {
                     <div className='button-container'>
                         <Button title={'Submit'} onClick={handleSubmit} />
                     </div>
-
                 </AddAppointmentContainer>
             </FormContainer>
         </AddAppointmentWrapper>

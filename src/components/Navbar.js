@@ -43,8 +43,6 @@ const Navbar = () => {
                             <MenuItem onClick={handleClose}>Logout</MenuItem>
                         </Menu>
                     </div>
-
-
                     :
                     <div className='nav-items'>
                         <Link to="/auth/login" className='link-style'> Login </Link>
