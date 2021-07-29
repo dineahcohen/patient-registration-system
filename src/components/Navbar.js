@@ -31,7 +31,7 @@ const Navbar = ({ history }) => {
         setAnchorEl(null);
     };
 
-    const name = userInfo.firstName + userInfo.lastName;
+    const name = userInfo?.firstName + userInfo?.lastName;
 
     return (
         <NavWrapper>
