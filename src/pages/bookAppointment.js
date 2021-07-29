@@ -8,7 +8,7 @@ import Button from '../components/StyledElements/Button';
 import { useSelector } from 'react-redux';
 
 
-const AddAppointment = () => {
+const AddAppointment = ({ history }) => {
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
@@ -36,6 +36,8 @@ const AddAppointment = () => {
 
             axios.post('http://localhost:5000/api/appointments/add', appointment)
                 .then(res => console.log(res.data));
+
+            history.push('/appointment/view');
         } catch (error) {
             console.log(error.response.data.message)
         }
