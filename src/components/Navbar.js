@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Menu from '@material-ui/core/Menu';
-// import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '../components/StyledElements/Button';
-import logo from '../assets/logo.svg'
-import { useSelector } from 'react-redux';
+import logo from '../assets/logo.svg';
+import { logout } from "../actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
-const Navbar = () => {
+const Navbar = ({ history }) => {
+    const dispatch = useDispatch();
+
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
+
+    const logoutHandler = () => {
+        dispatch(logout());
+        history.push("/");
+    };
+
+    useEffect(() => { }, [userInfo]);
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -22,6 +31,8 @@ const Navbar = () => {
         setAnchorEl(null);
     };
 
+    const name = userInfo.firstName + userInfo.lastName;
+
     return (
         <NavWrapper>
             <NavContainer>
@@ -31,7 +42,7 @@ const Navbar = () => {
 
                 {userInfo ?
                     <div>
-                        <Button onClick={handleClick} title={'df'} />
+                        <Button onClick={handleClick} title={name} />
                         <Menu
                             id="simple-menu"
                             anchorEl={anchorEl}
@@ -39,7 +50,7 @@ const Navbar = () => {
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
+                            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
                         </Menu>
                     </div>
                     :

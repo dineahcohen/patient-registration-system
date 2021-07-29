@@ -13,19 +13,19 @@ const AddAppointment = () => {
     const { userInfo } = userLogin;
 
     const [purpose, setPurpose] = useState('');
-    const [date, setDate] = useState(null);
-    const [time, setTime] = useState(null);
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
 
     const handlePurpose = (event) => {
         setPurpose(event.target.value);
     };
 
-    const handleDate = (date) => {
-        setDate(date);
+    const handleDate = (event) => {
+        setDate(event.target.value);
     };
 
-    const handleTime = (time) => {
-        setTime(time);
+    const handleTime = (event) => {
+        setTime(event.target.value);
     };
 
     const handleSubmit = (e) => {
@@ -58,30 +58,23 @@ const AddAppointment = () => {
                             value={purpose}
                             onChange={handlePurpose} />
 
+                        <TextField
+                            required
+                            label="Appointment Date"
+                            id="standard-size-normal"
+                            size="normal"
+                            value={date}
+                            onChange={handleDate} />
 
-                        <DatePicker
-                            selected={date}
-                            onChange={handleDate}
-                            dateFormat='dd/MM/yyyy'
-                            minDate={new Date()}
-                            withPortal
-                            portalId="root-portal"
-                            placeholderText='Appointment Date'
-                        />
-
-                        <DatePicker
-                            selected={time}
-                            onChange={handleTime}
-                            dateFormat="h:mm aa"
-                            showTimeSelect
-                            showTimeSelectOnly
-                            timeIntervals={30}
-                            timeCaption="Time"
-                            withPortal
-                            portalId="root-portal"
-                            placeholderText='Appointment Time'
-                        />
+                        <TextField
+                            required
+                            label="Appointment Time"
+                            id="standard-size-normal"
+                            size="normal"
+                            value={time}
+                            onChange={handleTime} />
                     </div>
+
                     <div className='button-container'>
                         <Button title={'Submit'} onClick={handleSubmit} />
                     </div>

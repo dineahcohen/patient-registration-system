@@ -46,7 +46,6 @@ const ViewAppointments = () => {
     const fetchData = async () => {
         const { data } = await axios.get(`http://localhost:5000/api/appointments/${userInfo.id}`);
         setAppointments(data);
-        console.log(data)
     }
 
     useEffect(() => {
@@ -62,7 +61,6 @@ const ViewAppointments = () => {
                     <Table className={classes.table} aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell> Name </StyledTableCell>
                                 <StyledTableCell> Purpose</StyledTableCell>
                                 <StyledTableCell> Appointment Date </StyledTableCell>
                                 <StyledTableCell> Appointment Time </StyledTableCell>
@@ -73,7 +71,6 @@ const ViewAppointments = () => {
                             return (
                                 <TableBody key={appointment._id}>
                                     <StyledTableRow >
-                                        <StyledTableCell component="th" scope="row"> {appointment.name} </StyledTableCell>
                                         <StyledTableCell> {appointment.purpose}</StyledTableCell>
                                         <StyledTableCell> {appointment.date}</StyledTableCell>
                                         <StyledTableCell> {appointment.time}</StyledTableCell>
