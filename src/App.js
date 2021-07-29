@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Error from './components/Error';
 import Navbar from './components/Navbar';
 import AddAppointment from './pages/bookAppointment';
 import Dashboard from './pages/dashboard';
@@ -18,6 +19,8 @@ function App() {
       <Route path="/appointment/add" component={AddAppointment} />
       <Route path="/appointment/view" component={ViewAppointments} />
       <Route path="/user/dashboard" component={Dashboard} />
+
+      <Route path="/error" component={Error} />
     </Router>
   );
 }

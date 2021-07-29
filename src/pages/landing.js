@@ -1,9 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import healthcareGroup from '../assets/healthcare-fight.svg';
 import Button from '../components/StyledElements/Button';
+import { useSelector } from 'react-redux';
 
-const Landing = () => {
+const Landing = ({ history }) => {
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
+    const handleSchedule = () => {
+        if (userInfo) {
+            history.push('/user/dashboard')
+        }
+        else {
+            history.push('/error')
+        }
+    }
     return (
         <LandingWrapper>
             <LandingContainer>
@@ -18,8 +31,7 @@ const Landing = () => {
                             aspects of your life. Even relatively minor health issues such as aches, pains,
                             lethargy, and indigestion.
                         </div>
-
-                        <Button title={'Schedule appointment'} />
+                        <Button title={'Schedule appointment'} onClick={handleSchedule} />
                     </div>
                 </ContentContainer>
 

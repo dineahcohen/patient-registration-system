@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import errorIcon from '../assets/error404.png';
 
-const Error = ({ message }) => (
+const Error = () => (
     <ErrorWrapper>
         <ErrorContainer>
-            {message}
+            <img src={errorIcon} />
         </ErrorContainer>
     </ErrorWrapper>
 )
@@ -18,9 +19,9 @@ const ErrorContainer = styled.div`
     justify-content: center;
     aign-items: center;
 
-    background: #A5243D;
-
     color: #ffff;
     text-align: center;
     font-weight: bold;
+
+    height: 80vh;
 `;
