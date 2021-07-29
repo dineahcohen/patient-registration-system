@@ -79,11 +79,11 @@ router.post("/register", (req, res, next) => {
                     message: 'User created',
                     result: response
                 })
-                    .catch(error => {
-                        res.status(500).json({
-                            error,
-                        })
-                    })
+
+            }).catch(error => {
+                res.status(500).json({
+                    error,
+                })
             })
     })
 })

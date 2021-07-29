@@ -9,6 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useSelector } from 'react-redux';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -39,8 +40,11 @@ const ViewAppointments = () => {
     const classes = useStyles();
     const [appointments, setAppointments] = useState([]);
 
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
     const fetchData = async () => {
-        const { data } = await axios.get('http://localhost:5000/api/appointments');
+        const { data } = await axios.get(`http://localhost:5000/api/appointments/${userInfo.id}`);
         setAppointments(data);
         console.log(data)
     }

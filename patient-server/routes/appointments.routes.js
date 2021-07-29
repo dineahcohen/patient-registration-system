@@ -2,16 +2,18 @@ const router = require('express').Router();
 const Appointment = require('../models/appointment')
 
 
-router.route('/').get((req, res) => {
-    Appointment.find()
-        .then(appointment => res.json(appointment))
-        .catch(err => res.status(400).json('Error: ' + err))
-});
+// router.route('/').get((req, res) => {
+//     console.log(req.body);
+//     Appointment.find(req.body.user)
+//         .then(appointment => res.json(appointment))
+//         .catch(err => res.status(400).json('Error: ' + err))
+// });
 
 router.route('/add').post((req, res) => {
-    const { purpose, date, time } = req.body;
+    const { purpose, date, time, user } = req.body;
+
     const newAppointment = new Appointment({
-        user: req.body.user,
+        user,
         purpose,
         date,
         time
@@ -26,15 +28,16 @@ router.route('/add').post((req, res) => {
 });
 
 router.route('/:id').get((req, res) => {
-    Appointment.findById(req.params.id)
-        .then(appointment => res.json(appointment))
-        .catch(err => res.status(400).json('Error: ' + err));
+    Appointment.find({ user: req.params.id }, function (err, docs) {
+        console.log(docs);
+        if (err) {
+            res.sendStatus(500);
+        }
+        res.json(docs);
+    });
+
+
 });
 
-router.route('/:id').get((req, res) => {
-    Appointment.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Appointment canceled.'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
 
 module.exports = router;

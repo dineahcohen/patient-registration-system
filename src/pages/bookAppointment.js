@@ -5,30 +5,34 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import TextField from '@material-ui/core/TextField';
 import Button from '../components/StyledElements/Button';
+import { useSelector } from 'react-redux';
 
 
 const AddAppointment = () => {
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
+
     const [purpose, setPurpose] = useState('');
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [selectedTime, setSelectedTime] = useState(null);
+    const [date, setDate] = useState(null);
+    const [time, setTime] = useState(null);
 
     const handlePurpose = (event) => {
         setPurpose(event.target.value);
     };
 
     const handleDate = (date) => {
-        setSelectedDate(date);
+        setDate(date);
     };
 
     const handleTime = (time) => {
-        setSelectedTime(time);
+        setTime(time);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         try {
-            const appointment = { purpose, selectedDate, selectedTime }
+            const appointment = { user: userInfo.id, purpose, date, time }
 
             axios.post('http://localhost:5000/api/appointments/add', appointment)
                 .then(res => console.log(res.data));
@@ -56,7 +60,7 @@ const AddAppointment = () => {
 
 
                         <DatePicker
-                            selected={selectedDate}
+                            selected={date}
                             onChange={handleDate}
                             dateFormat='dd/MM/yyyy'
                             minDate={new Date()}
@@ -66,7 +70,7 @@ const AddAppointment = () => {
                         />
 
                         <DatePicker
-                            selected={selectedTime}
+                            selected={time}
                             onChange={handleTime}
                             dateFormat="h:mm aa"
                             showTimeSelect
