@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import healthcareGroup from '../assets/healthcare-fight.svg';
 import Button from '../components/StyledElements/Button';

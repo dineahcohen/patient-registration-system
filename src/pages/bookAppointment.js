@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import TextField from '@material-ui/core/TextField';
 import Button from '../components/StyledElements/Button';
 import { useSelector } from 'react-redux';
